@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página con canciones y video interactivos">
+  <meta name="author" content="Chuchitos con Flow">
+  <meta name="keywords" content="música, video, corrido, audio">
+  <title>Chuchitos con Flow</title>
+  <link rel="icon" href="pene.png" type="image/png">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Imagen tipo banner */
+    .banner-img {
+      width: 100%;
+      display: block;
+      max-height: 400px;
+      object-fit: cover;
+      box-shadow: 0 0 20px #00b3ff;
+    }
+
+    .glow {
+      text-shadow: 0 0 20px rgba(0, 0, 255, 1), 0 0 30px rgba(0, 0, 255, 1), 0 0 40px rgba(0, 0, 255, 1);
+    }
+
+    h1 {
+      font-size: 6em;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
+      text-align: center;
+      color: #00b3ff;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: #00b3ff;
+      text-transform: uppercase;
+      margin-top: 20px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .glow-text {
+      color: #00b3ff;
+      text-shadow: 0 0 20px #00b3ff, 0 0 30px #00b3ff, 0 0 40px #00b3ff;
+    }
+
+    .cuadro-canciones {
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 2px solid #00b3ff;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 179, 255, 1);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .cancion-boton {
+      background: rgba(0, 0, 0, 0.9);
+      border: 3px solid #00b3ff;
+      padding: 18px;
+      margin: 12px 0;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px #00b3ff;
+      transition: 0.3s;
+    }
+
+    .cancion-boton:hover {
+      background: #00b3ff;
+      transform: scale(1.1);
+    }
+
+    .reproductor {
+      display: none;
+      margin: 20px auto;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 20px #00b3ff;
+    }
+
+    .video-box {
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 30px rgba(0, 179, 255, 1);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .content-wrapper {
+      padding: 40px 20px;
+    }
+
+    .menu {
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .menu ul {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu ul li {
+      margin: 0 15px;
+      font-size: 2em;
+      color: white;
+    }
+
+    .menu ul li:hover {
+      color: #00b3ff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de Navegación -->
+  <div class="menu">
+    <ul>
+      <li onclick="window.location.href='#inicio'">Inicio</li>
+      <li onclick="window.location.href='#canciones'">Porno Corridos</li>
+      <li onclick="window.location.href='contacto.html'">Contacto</li>
+      <li onclick="window.location.href='#video'">Ver Video</li>
+    </ul>
+  </div>
+
+  <!-- Banner superior -->
+  <img src="Corrido.png" alt="Banner Corrido" class="banner-img" id="inicio">
+
+  <!-- Contenido principal -->
+  <div class="content-wrapper">
+    <h1 class="glow">Chuchitos con Flow</h1>
+    <h2 class="glow-text">Dylan Steven, Diego Alejandro, Nelson Salvador, Ernesto Antonio y el pinche mero vergas: el Pilli</h2>
+    <p class="glow-text">Bienvenidos a la página más cabrona, con los mejores corridos, videos y música. La vida de un verdadero gangster.</p>
+
+    <!-- Cuadro de Canciones -->
+    <div class="cuadro-canciones" id="canciones">
+      <div class="cancion-boton" onclick="toggleReproductor('audio1', 'reproductor1')">Escuchar Porno Corrido 1</div>
+      <div class="cancion-boton" onclick="toggleReproductor('audio2', 'reproductor2')">Escuchar Porno Corrido 2</div>
+      <div class="cancion-boton" onclick="toggleReproductor('audio3', 'reproductor3')">Escuchar Porno Corrido 3</div>
+
+      <!-- Reproductores -->
+      <div class="reproductor" id="reproductor1">
+        <audio id="audio1" controls>
+          <source src="(intro hablada) (1).mp3" type="audio/mp3">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+      <div class="reproductor" id="reproductor2">
+        <audio id="audio2" controls>
+          <source src="Vato.mp3" type="audio/mp3">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+      <div class="reproductor" id="reproductor3">
+        <audio id="audio3" controls>
+          <source src="como.mp3" type="audio/mp3">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+    </div>
+
+    <!-- Video directamente visible -->
+    <div class="video-box" id="video">
+      <video controls>
+        <source src="0506.mp4" type="video/mp4">
+        Tu navegador no soporta este video.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function toggleReproductor(audioId, reproductorId) {
+      var audio = document.getElementById(audioId);
+      var reproductor = document.getElementById(reproductorId);
+      if (audio.paused) {
+        audio.play();
+        reproductor.style.display = "block";
+      } else {
+        audio.pause();
+        reproductor.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
